@@ -136,6 +136,10 @@ margin-left: -22px;
   width: 190px;
   font-size: small;
   color: #444;
+  background-color: #E8E8E8;
+  border-left: 5px solid #99BD1D;
+  padding-left: 5px;
+  bottom: 0px;
 }
 
 #right_info h1 {
@@ -143,8 +147,6 @@ margin-left: -22px;
 	color: white;
 	width: 100%;
 	margin: 0;
-	margin-left: -5px;
-	border-left: 5px solid #99BD1D;
 	padding-bottom: 2px;
 	font-size: medium;
 }
