@@ -462,11 +462,15 @@ color: white;
 /* Rules for the main content area */
 
 #content {
-  padding: 0px;
-  margin: 0px;
+  padding: 3px 8px 4px 8px;
   position: absolute; 
   bottom: 0px;
   line-height: 1.2em;
+}
+
+#content.site_index {
+	padding: 0px;
+	margin: 0px;
 }
 
 #slim_container {
