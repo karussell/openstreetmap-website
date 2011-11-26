@@ -87,9 +87,10 @@
 
     <div id="toolsmenu" class="menu">
       <ul>
+<!-- FIXME: don't show map key and export if we're not actually on the map page -->
           <li><a href="#" onclick="openMapKey();">Map key</a></li>
-          <li><a href="#">Export</a></li>
-          <li><a href="/traces">GPS traces</a></li>
+          <li><%= link_to t('layouts.export'), {:controller => 'site', :action => 'export'}, {:id => 'exportanchor', :title => t('layouts.export_tooltip')} %></li>
+          <li><%= link_to t('layouts.gps_traces'), {:controller => 'trace', :action => 'list', :display_name => nil, :tag => nil, :page => nil}, {:id => 'traceanchor', :title => t('layouts.gps_traces_tooltip')} %></li>
           <li><a href="http://taginfo.openstreetmap.org/">Tag info</a></li>
       </ul>
     </div>
@@ -125,7 +126,7 @@
 				<li><a href="http://lists.openstreetmap.org/">Mailing lists</a>
 				<li><a href="http://forum.openstreetmap.org/">Forum</a>
 				<li><a href="http://wiki.openstreetmap.org/wiki/Mapping_projects">International sites</a>
-				<li><a href="/diary">User diaries</a>
+				<li><%= link_to t('layouts.user_diaries'), {:controller => 'diary_entry', :action => 'list', :display_name => nil}, {:id => 'diaryanchor', :title => t('layouts.user_diaries_tooltip')} %>
 				<li><a href="http://blogs.openstreetmap.org/">Blogs</a>
 			</ul>
 		</div>
