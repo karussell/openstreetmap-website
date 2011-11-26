@@ -59,7 +59,9 @@
 			</form>
 			<ul id="search_links">
 				<!-- <li><a href="#">Get directions</a></li> -->
+			    <% if @user %>
 				<li><a href="#"><%= image_tag("grey_home_icon.png", :id=>"home_icon", :size => "14x14", :border => 0, :alt => t('layouts.home_tooltip')) %>&nbsp;<%= t 'layouts.home' %></a></li>
+				<% end %>
 			</ul>
 		</div>
 	</div>
