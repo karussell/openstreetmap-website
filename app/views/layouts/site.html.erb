@@ -138,8 +138,13 @@
 		<p><a href="http://opengeodata.org/project-of-the-week-tennis">OpenCycleMap - bike mapping from OSM data.</a></p>
 
 		<h1>Support us.</h1>
-		<p>OpenStreetMap is a free editable map of the world, made by people like you.</p>
-		<p>We are kindly supported by the <a href="http://www.vr.ucl.ac.uk/">UCL VR Centre</a>, <a href="http://www.imperial.ac.uk/">Imperial College London</a>, <a href="http://www.bytemark.co.uk/">Bytemark Hosting</a>, and <a href="http://wiki.openstreetmap.org/wiki/Partners">more</a>.</p>
+        <p><%= t 'layouts.intro_1' %></p>
+        <p><%= raw(t 'layouts.intro_3', 
+                  :ucl => link_to(t('layouts.intro_3_ucl'), "http://www.vr.ucl.ac.uk"),
+                  :ic => link_to(t('layouts.intro_3_ic'), "http://www.imperial.ac.uk/"),
+                  :bytemark => link_to(t('layouts.intro_3_bytemark'), "http://www.bytemark.co.uk"),
+                  :partners => link_to(t('layouts.intro_3_partners'), t('layouts.intro_3_partners_url'))) %>
+        </p>
     </div>
 
     <script type="text/javascript">
