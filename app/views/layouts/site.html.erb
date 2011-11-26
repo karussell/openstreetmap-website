@@ -1,54 +1,80 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>" dir="<%= t'html.dir' %>">
   <%= render :partial => "layouts/head" %>
+
+  <!-- General FIXMEs:
+       no RTL or small-screen support
+  -->
+
   <body>
-    <div id="small-title">
-      <%= link_to(image_tag("osm_logo.png", :size => "16x16", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
-      <h1><%= t 'layouts.project_name.h1' %></h1>
-    </div>
+
+	<!-- Black navigation bar -->
+
+	<div id="black_bar">
+
+		<!-- FIXME: rename History to Activity -->
+        <%
+        viewclass = 'top_tab geolink llz layers'
+        editclass = 'top_tab geolink llz object minzoom13 disabled'
+        historyclass = 'top_tab geolink bbox minzoom11'
+        viewclass += ' active' if params['controller'] == 'site' and params['action'] == 'index' 
+        editclass += ' active' if params['controller'] == 'site' and params['action'] == 'edit' 
+        historyclass += ' active' if params['controller'] == 'changeset' and params['action'] == 'list' 
+        %>
+        <%= link_to t('layouts.view'), {:controller => 'site', :action => 'index'}, {:id => 'view', :title => t('layouts.view_tooltip'), :class => viewclass} %><%= link_to h(t('layouts.edit')), {:controller => 'site', :action => 'edit'}, {:id => 'edit', :title => t('javascripts.site.edit_tooltip'), :class => editclass} %><%= link_to t('layouts.history'), {:controller => 'changeset', :action => 'list' }, {:id => 'history', :title => t('javascripts.site.history_tooltip'), :class => historyclass} %>
+		<span id="login">
+			<a id="tools" href="#">Tools&nbsp;&#x25be;</a>
+
+			<% if @user and @user.id %>
+				<!-- FIXME: do proper userprompt layout here as per mockup -->
+				<span id="full-greeting"><%= raw(t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), {:controller => 'user', :action => 'view', :display_name => @user.display_name}, :title => t('layouts.welcome_user_link_tooltip'))) %></span> 
+				<span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), {:controller => 'user', :action => 'view', :display_name => @user.display_name} %></span> 
+				<%= yield :greeting %>
+				<% if @user.new_messages.size > 0 %>
+					<span id="notifications"><%= @user.new_messages.size %></span>
+				<% end %>
+				&nbsp;&#x25be;
+<!--			<%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%> -->
+			<% else %>
+				<%= link_to t('layouts.log_in'), {:controller => 'user', :action => 'login', :referer => request.fullpath}, {:id => 'loginprompt', :title => t('layouts.log_in_tooltip')} %>
+				<%= link_to t('layouts.sign_up'), {:controller => 'user', :action => 'new'}, {:id => 'signupprompt', :title => t('layouts.sign_up_tooltip')} %>
+			<% end %>
+		</span>
+	</div>
+	
+	<!-- Masthead and search bar -->
+	<!-- FIXME: don't hardcode search_20px image path; home link -->
+
+	<div id="masthead">
+		<%= link_to(image_tag("osm_logo_70px.png", :id=>"osmlogo", :size => "70x70", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
+		<div id="siteid">
+			<span id="sitename"><%= t 'layouts.project_name.h1' %></span><br/>
+			<span id="slogan">the free wiki world map</span>
+		</div>
+
+		<div id="search_container">
+		    <form action="/" id="search_form" method="get" onsubmit="setSearchViewbox(); new Ajax.Request('/geocoder/search', {asynchronous:true, evalScripts:true, onComplete:function(request){endSearch()}, onLoading:function(request){startSearch()}, parameters:Form.serialize(this)}); return false;">
+		      <input id="query" name="query" tabindex="1" type="text" value="" /><input id="searchbutton" name="commit" type="image" src="/assets/search_20px.png" height="20px" value="Go" />
+			</form>
+			<ul id="search_links">
+				<!-- <li><a href="#">Get directions</a></li> -->
+				<li><a href="#">Home</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<!-- -->
+
+	<!-- Main content -->
+
     <div id="content" class="<%= params[:controller] %>_<%= params[:action] %>">
       <%= render :partial => "layouts/flash", :locals => { :flash => flash } %>
 
       <%= yield %>
     </div>
 
-    <span id="greeting">
-      <% if @user and @user.id %>
-        <span id="full-greeting"><%= raw(t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), {:controller => 'user', :action => 'view', :display_name => @user.display_name}, :title => t('layouts.welcome_user_link_tooltip'))) %></span> 
-        <span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), {:controller => 'user', :action => 'view', :display_name => @user.display_name} %></span> | 
-        <%= yield :greeting %>
-        <%= render :partial => "layouts/inbox" %> |
-        <%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%>
-      <% else %>
-        <%= link_to t('layouts.log_in'), {:controller => 'user', :action => 'login', :referer => request.fullpath}, {:id => 'loginanchor', :title => t('layouts.log_in_tooltip')} %> |
-        <%= link_to t('layouts.sign_up'), {:controller => 'user', :action => 'new'}, {:id => 'registeranchor', :title => t('layouts.sign_up_tooltip')} %>
-      <% end %>
-    </span>
-
-    <div>
-      <ul id="tabnav">
-        <%
-        viewclass = 'geolink llz layers'
-        editclass = 'geolink llz object minzoom13 disabled'
-        historyclass = 'geolink bbox minzoom11'
-        exportclass = 'geolink llz layers'
-        traceclass = ''
-        diaryclass = ''
-        viewclass += ' active' if params['controller'] == 'site' and params['action'] == 'index' 
-        editclass += ' active' if params['controller'] == 'site' and params['action'] == 'edit' 
-        historyclass += ' active' if params['controller'] == 'changeset' and params['action'] == 'list' 
-        exportclass += ' active' if params['controller'] == 'site' and params['action'] == 'export'
-        traceclass += ' active' if params['controller'] == 'trace'
-        diaryclass += ' active' if params['controller'] == 'diary_entry'
-        %>
-        <li><%= link_to t('layouts.view'), {:controller => 'site', :action => 'index'}, {:id => 'viewanchor', :title => t('layouts.view_tooltip'), :class => viewclass} %></li>
-        <li><%= link_to h(t('layouts.edit')) + '&nbsp;&#x25be;'.html_safe, {:controller => 'site', :action => 'edit'}, {:id => 'editanchor', :title => t('javascripts.site.edit_tooltip'), :class => editclass} %></li>
-        <li><%= link_to t('layouts.history'), {:controller => 'changeset', :action => 'list' }, {:id => 'historyanchor', :title => t('javascripts.site.history_tooltip'), :class => historyclass} %></li>
-        <li><%= link_to t('layouts.export'), {:controller => 'site', :action => 'export'}, {:id => 'exportanchor', :title => t('layouts.export_tooltip'), :class => exportclass} %></li>
-        <li><%= link_to t('layouts.gps_traces'), {:controller => 'trace', :action => 'list', :display_name => nil, :tag => nil, :page => nil}, {:id => 'traceanchor', :title => t('layouts.gps_traces_tooltip'), :class => traceclass} %></li>
-        <li><%= link_to t('layouts.user_diaries'), {:controller => 'diary_entry', :action => 'list', :display_name => nil}, {:id => 'diaryanchor', :title => t('layouts.user_diaries_tooltip'), :class => diaryclass} %></li>
-      </ul>
-    </div>
+	<!-- Drop-down menus -->
+	<!-- FIXME: proper links -->
 
     <div id="editmenu" class="menu">
       <ul>
@@ -58,71 +84,62 @@
       </ul>
     </div>
 
+    <div id="toolsmenu" class="menu">
+      <ul>
+          <li><a href="#" onclick="openMapKey();">Map key</a></li>
+          <li><a href="#">Export</a></li>
+          <li><a href="/traces">GPS traces</a></li>
+          <li><a href="http://taginfo.openstreetmap.org/">Tag info</a></li>
+      </ul>
+    </div>
+
+    <div id="usermenu" class="menu">
+      <ul>
+          <li><a href="#">Inbox</a></li>
+          <li><a href="#">Log out</a></li>
+      </ul>
+    </div>
+
     <script type="text/javascript">
       createMenu("editanchor", "editmenu", 1000, "left");
+      createMenu("tools", "toolsmenu", 1, "left");
+      createMenu("userprompt", "usermenu", 1, "left");
     </script>
 
-    <div id="left">
-      <div id="logo">
-        <center>
-          <h1><%= t 'layouts.project_name.h1' %></h1>
-          <%= link_to(image_tag("osm_logo.png", :size => "120x120", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %><br/>
-          <h2 class="nowrap"><%= t('layouts.tag_line') %></h2>
-        </center>
-      </div>
+	<!-- Right-hand additional content -->
+	<!-- FIXME: well, all of it -->
 
-      <%= yield :optionals %>
+    <div id="right_info">
 
-      <% unless @user %>
-      <div id="intro">
-        <p>
-          <%= t 'layouts.intro_1' %>
-        </p>
-        <p>
-          <%= t 'layouts.intro_2' %>
-        </p>
-        <p>
-        <%= raw(t 'layouts.intro_3', 
-                  :ucl => link_to(t('layouts.intro_3_ucl'), "http://www.vr.ucl.ac.uk"),
-                  :ic => link_to(t('layouts.intro_3_ic'), "http://www.imperial.ac.uk/"),
-                  :bytemark => link_to(t('layouts.intro_3_bytemark'), "http://www.bytemark.co.uk"),
-                  :partners => link_to(t('layouts.intro_3_partners'), t('layouts.intro_3_partners_url'))) %>
-        </p>
-      </div>
-      <% end %>
+		<h1>Getting started.</h1>
+		<div style="margin-bottom:4px">
+			<ul style="margin-bottom:0px">
+				<li><a href="#">The 30-second guide</a>
+				<li><a href="http://help.openstreetmap.org/">Get help</a>
+				<li><a href="http://wiki.openstreetmap.org/wiki/Develop">Developer guide</a>
+				<li><a href="http://wiki.openstreetmap.org/">Project wiki</a>
+				<li><a href="#" id='communityopen' onclick="document.getElementById('communityopen').style.display='none';document.getElementById('communitylinks').style.display='block'">Community &darr;</a>
+			</ul>
+			<ul id="communitylinks" style="margin-top:0px;display:none;">
+				<li><a href="http://lists.openstreetmap.org/">Mailing lists</a>
+				<li><a href="http://forum.openstreetmap.org/">Forum</a>
+				<li><a href="http://wiki.openstreetmap.org/wiki/Mapping_projects">International sites</a>
+				<li><a href="/diary">User diaries</a>
+				<li><a href="http://blogs.openstreetmap.org/">Blogs</a>
+			</ul>
+		</div>
 
-      <% if STATUS == :database_offline or STATUS == :api_offline %>
-      <div id="alert">
-        <%= t 'layouts.osm_offline' %>
-      </div>
-      <% elsif STATUS == :database_readonly or STATUS == :api_readonly %>
-      <div id="alert">
-        <%= t 'layouts.osm_read_only' %>
-      </div>
-      <% end %>
+		<h1>Latest project.</h1>
+		<p><a href="#"><img src="/assets/tennis.jpg"></a></p>
+		<p><a href="http://opengeodata.org/project-of-the-week-tennis">Map your local tennis court.</a></p>
 
-      <% if false %>
-      <div id="donate" class="notice">
-        <%= t 'layouts.donate', :link => "<a href=\"http://donate.openstreetmap.org/\">#{t('layouts.donate_link_text')}</a>" %>
-      </div>
-      <% end %>
+		<h1>OSM showcase.</h1>
+		<p><a href="#"><img src="/assets/opencyclemap.jpg"></a></p>
+		<p><a href="http://opengeodata.org/project-of-the-week-tennis">OpenCycleMap - bike mapping from OSM data.</a></p>
 
-      <div id="left_menu" class="left_menu">
-        <ul>
-          <li><%= link_to(t('layouts.help_centre'), t('layouts.help_url'), :title => t('layouts.help_title')) %></li>
-          <li><%= link_to(t('layouts.documentation'), t('layouts.wiki_url'), :title => t('layouts.documentation_title')) %></li>
-          <li><%= link_to t('layouts.copyright'), {:controller => 'site', :action => 'copyright'} %></li>
-          <li><a href="http://blogs.openstreetmap.org/" title="<%= t 'layouts.community_blogs_title' %>"><%= t 'layouts.community_blogs' %></a></li>
-          <li><a href="http://www.osmfoundation.org" title="<%= t 'layouts.foundation_title' %>"><%= t 'layouts.foundation' %></a></li>
-          <%= yield :left_menu %>
-        </ul>
-      </div>
-
-      <center>
-        <div class="donate">
-          <a href="http://donate.openstreetmap.org/" title="<%= h(t('layouts.make_a_donation.title')) %>"><%= h(t('layouts.make_a_donation.text')) %></a>
-        </div>
-      </center>
+		<h1>Support us.</h1>
+		<p>OpenStreetMap is a free editable map of the world, made by people like you.</p>
+		<p>We are kindly supported by the <a href="http://www.vr.ucl.ac.uk/">UCL VR Centre</a>, <a href="http://www.imperial.ac.uk/">Imperial College London</a>, <a href="http://www.bytemark.co.uk/">Bytemark Hosting</a>, and <a href="http://wiki.openstreetmap.org/wiki/Partners">more</a>.</p>
     </div>
 
     <script type="text/javascript">

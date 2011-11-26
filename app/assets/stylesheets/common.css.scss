@@ -1,10 +1,23 @@
 /* Styles common to large and small screens */
 
+/* Temporary logo rule - needs to be properly integrated across large/small sites */
+
+#osmlogo {
+	margin-left: 10px;
+	margin-top: 10px;
+	border: 0;
+	float: left;
+}
+
+
 /* Default rules for the body of every page */
 
 body {
-  font-family: Arial,sans-serif;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
   color: #000;
+  background: url('/assets/grey_200px_border.png');
+  background-position: right;
+  background-repeat: repeat-y;
   background-color: #fff;
   margin: 0px;
   padding: 0px;
@@ -34,39 +47,6 @@ hr {
   height: 1px;
 }
 
-/* Rules for the whole left sidebar, including the logo */
-
-#left {
-  position: absolute;
-  top: 0px;
-  min-width: 170px;
-}
-
-/* Rules for the OpenStreetMap logo in the top left corner */
-
-#logo {
-  width: 170px;
-  min-width: 170px;
-  padding: 5px;
-  margin: 5px;
-  height: 150px;
-  background: #fff;
-  border: 1px solid #ccd;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-
-#logo h1 {
-  font-size: 14px;
-  text-align: center;
-  margin: 0px;
-}
-
-#logo h2 {
-  font-size: 10px;
-  margin: 0px;
-}
-
 /* Rules for the site name */
 
 #small-title {
@@ -76,7 +56,7 @@ hr {
 /* Rules for the introductory text displayed in the left sidebar to new users */
 
 #intro {
-  width: 170px;
+  width: 160px;
   padding: 5px;
   margin: 5px;
   border: 1px solid #ccc;
@@ -96,7 +76,7 @@ hr {
  */
 
 #alert {
-  width: 170px;
+  width: 160px;
   margin: 5px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -114,7 +94,7 @@ hr {
  */
 
 .notice {
-  width: 170px;
+  width: 160px;
   margin: 5px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -125,43 +105,72 @@ hr {
   -moz-border-radius: 5px;
 }
 
-/* Rules for the menu displayed in the left sidebar */
+/* Feature boxes (RH column) */
 
-.left_menu {
-  width: 170px;
-  min-width: 170px;
-  margin: 5px;
+.feature_box {
+  width: 160px;
+  min-width: 160px;
+  margin: 10px;
   padding: 5px;
-  border: 1px solid #ccc;
-  background: #ddd;
-  line-height: 1.2em;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  background: #82A24F;
+  font-size: 13px;
+  color: white;
 }
 
-.left_menu td {
+/* Link boxes (RH column) */
+
+.link_box {
+  width: 160px;
+  min-width: 160px;
+  margin: 10px;
+  padding: 5px;
+  background: #B25563;
+  font-size: 13px;
+  color: white;
+}
+
+/* Feature/link box styles */
+
+.link_box td {
   font-size: 12px;
 }
 
-.left_menu h1 {
+.feature_box h1, .link_box h1 {
+  margin: 0px 0px 5px 0px;
   font-style: normal;
   font-size: 15px;
 }
 
-.left_menu ul {
+.link_box ul {
   margin: 0px;
   list-style-type: none;
 }
 
-.left_menu li {
+.link_box li {
   margin: 0px;
   padding: 0px;
 }
 
-.left_menu a {
-  color: #000;
+.feature_box p, .link_box p {
+	color: white;
+	font-size: 12px;
+	margin: 4px 0;
+}
+
+.feature_box a, .link_box a {
+  color: white;
+  font-weight: normal;
+}
+
+/* OpenStreetMap Inside */
+
+#inside_image a {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+
+#inside_image a img {
+	border: 0;
 }
 
 /* Rules for SOTM advert */
@@ -182,8 +191,8 @@ hr {
  */
 
 .optionalbox {
-  width: 170px;
-  min-width: 170px;
+  width: 160px;
+  min-width: 160px;
   margin: 5px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -202,45 +211,17 @@ hr {
   vertical-align: bottom;
 }
 
-/* Rules for the search box */
+/* Rules for collapse arrow */
 
-.whereami {
-  line-height: 22px;
-  vertical-align: bottom;
-}
-
-.search_container {
-  height: 16px;
-  padding-bottom: 6px;
-}
-
-#search_field form {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-#search_field input[type="text"] {
-  width: 136px;
-}
-
-#search_field input[type="submit"] {
-  width: 26px;
-  padding-left: 0px;
-  padding-right: 0px;
-}
-
-.search_help {
-  font-size: 10px;
-  line-height: 1em;
-  margin-top: 3px;
-  margin-bottom: 0px;
+#collapse_arrow {
+	margin: 4px 0px 0px 10px;
+	padding: 0px;
 }
 
 /* Rules for donation request box */
 
 .donate {
-  width: 170px;
+  width: 160px;
   margin: 5px;
   padding: 5px;
   border: 1px solid #ccc;
@@ -264,9 +245,8 @@ hr {
 #tabnav
 {
   height: 20px;
-  margin: 0px;
-  padding-top: 5px;
-  background: image-url('tab_bottom.gif') repeat-x bottom;
+  margin: 5px 198px 0 0;
+  background: #DDD;
 }
 
 #tabnav li
@@ -277,32 +257,41 @@ hr {
   list-style-type: none;
 }
 
-#tabnav a, #tabnav a:link, #tabnav a:visited 
-{
-  background: #f3f3f3;
+#tabnav a {
   font-size: 13px;
   line-height: 14px;
-  font-weight: bold;
-  padding: 2px 10px;
-  border: 1px solid #ccc;
-  text-decoration: none;
-  color: #333;
-  border-top-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  border-top-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
 }
 
-#tabnav a:link.active, #tabnav a:visited.active
+#tabnav a.tooltab, #tabnav a.logintab {
+	color: black;
+	padding: 3px;
+}
+
+#tabnav a.logintab {
+	position: absolute; right: 200px;
+}
+
+#tabnav a.geotab, #tabnav a:link.geotab, #tabnav a:visited.geotab
+{
+border-left: 4px solid white;
+border-right: 4px solid white;
+margin-left: -4px;
+  background: #009fe3;
+color: white;
+  font-weight: bold;
+  padding: 3px 15px;
+  text-decoration: none;
+}
+
+#tabnav a:link.active.geotab, #tabnav a:visited.active.geotab
 {
   border-bottom: 1px solid #fff;
-  background: #fff;
-  color: #000;
+  background: #1d71b8;
 }
 
-#tabnav a:link:hover, #tabnav a:visited:hover
+#tabnav a:link:hover.geotab, #tabnav a:visited:hover.geotab
 {
-  background: #fff;
+  background: #1d71b8;
 }
 
 #tabnav a:link.disabled, #tabnav a:visited.disabled,
@@ -312,6 +301,7 @@ hr {
   color: white
 }
 
+
 /* Rules for greeting bar in the top right corner */
 
 #greeting {
@@ -320,7 +310,7 @@ hr {
   padding-top: 5px;
   font-size: 13px;
   line-height: 14px;
-  background: image-url('tab_bottom.gif') repeat-x bottom;
+  background: url('../images/tab_bottom.gif') repeat-x bottom;
 }
 
 .greeting-bar-unread {
@@ -338,16 +328,13 @@ hr {
 /* Rules for OpenLayers maps */
 
 #map {
-  border: 1px solid black;
+  border: 0px;
   margin: 0px; 
   padding: 0px;
 }
 
 .olControlAttribution {
-  bottom: 15px !important;
-  left: 0px !important;
-  right: 0px !important;
-  text-align: center;
+  display: none !important;
 }
 
 #permalink {
@@ -359,28 +346,6 @@ hr {
   font-size: smaller;
 }
 
-/* Rules for edit menu */
-
-.menu {
-  display: none;
-  z-index: 10000;
-  position: absolute;
-  background-color: #ffffff;
-  border: 1px solid black;
-}
-
-.menu ul {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-.menu li {
-  list-style-type: none;
-  white-space: nowrap;
-}
-
 /* Rules for attribution text under the main map shown on printouts */
 
 #attribution {
@@ -389,40 +354,6 @@ hr {
 
 .attribution_notice {
   text-align: center;
-}
-
-/* Rules for the popout map sidebar */
-
-#sidebar {
-  display: none;
-  position: absolute;
-  border: 1px solid black;
-  margin: 0px;
-  padding: 0px;
-  width: 30%;
-  top: 0px;
-  bottom: 0px;
-}
-
-#sidebar #sidebar_content {
-  overflow: auto;
-  position: absolute;
-  font-size: 13px;
-  line-height: 14px;
-  top: 29px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-}
-
-#sidebar .sidebar_title {
-  margin: 0px;
-  padding: 3px 6px;
-  height: 29px;
-  font-size: 14px;
-  line-height: 15px;
-  border-bottom: 1px solid black;
-  background: #bbb;
 }
 
 /* Rules for the map key which appears in the popout sidebar */
@@ -534,7 +465,7 @@ hr {
   padding: 0px;
   margin: 0px;
   position: absolute; 
-  bottom: 10px;
+  bottom: 0px;
   line-height: 1.2em;
 }
 
@@ -935,7 +866,7 @@ p#contributorGuidance {
 
 /* Rules for highlighting fields with rails validation errors */
 
-.field_with_errors {
+.fieldWithErrors {
   padding: 2px;
   background-color: red;
   display: table;
@@ -982,12 +913,15 @@ p#contributorGuidance {
   font-size: 0.8em;
 }
 
-input[type="text"], input[type="email"], input[type="url"], input[type="password"], textarea {
-  border: 1px solid black;
+input[type="text"], input[type="password"], textarea {
+  border: 1px solid #BBB;
+  background-color: #F2F2F2;
+  margin-right: 0px;
 }
 
 input[type="submit"] {
-  border: 1px solid black;
+  border: 1px solid #BBB;
+  background: #DDD;
 }
 
 /* Rules for user images */

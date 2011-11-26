@@ -28,24 +28,23 @@ html body {
 
 /* Rules for the menu displayed in the left sidebar */
 
-.left_menu {
+.link_box {
   left: 0px;
 }
 
-.left_menu td {
+.link_box td {
   padding-right: 4px;
 }
 
-.left_menu h1 {
+.link_box h1 {
   text-align: left;
-  padding: 0em 0em 0em 1em;
 }
 
-.left_menu ul {
+.link_box ul {
   padding-left: 0px;
 }
 
-.left_menu img {
+.link_box img {
   margin: 2px 8px 0px 0px;
 }
 
@@ -60,17 +59,12 @@ html body {
   text-align: left;
 }
 
-/* Rules for the search box */
-
-.whereami {
-  float: right;
-}
-
 /* Rules for tabbed navigation bar */
 
 #tabnav
 {
-  padding-left: 215px;
+  margin-left: 10px;
+  padding-left: 0px;
 }
 
 #tabnav a, #tabnav a:link, #tabnav a:visited 
@@ -119,8 +113,8 @@ html body {
 /* Rules for the main content area */
 
 #content {
-  left: 192px;
-  right: 10px;
+  left: 0px;
+  right: 200px;
   text-align: left;
 }
 
@@ -230,6 +224,6 @@ form#termsForm input#agree {
 }
 
 input.openid_url { 
-  background: image-url('openid_input.png') repeat-y left white;
+  background: url('../images/openid_input.png') repeat-y left white;
   padding-left: 16px;
 }
