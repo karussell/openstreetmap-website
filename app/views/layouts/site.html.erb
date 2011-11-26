@@ -26,15 +26,16 @@
 			<a id="tools" href="#">Tools&nbsp;&#x25be;</a>
 
 			<% if @user and @user.id %>
-				<!-- FIXME: do proper userprompt layout here as per mockup -->
-				<span id="full-greeting"><%= raw(t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), {:controller => 'user', :action => 'view', :display_name => @user.display_name}, :title => t('layouts.welcome_user_link_tooltip'))) %></span> 
-				<span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), {:controller => 'user', :action => 'view', :display_name => @user.display_name} %></span> 
+				<!-- FIXME: full-greeting vs small-greeting -->
+				<!-- FIXME: t('layouts.welcome_user_link_tooltip') -->
+				<a href="<%= url_for(:controller => 'user', :action => 'view', :display_name => @user.display_name) %>" id="userprompt">
+				<%= raw(t 'layouts.logged_in_as', :user_link => '<span id="username">'+@user.display_name+'</span>') %>
 				<%= yield :greeting %>
 				<% if @user.new_messages.size > 0 %>
 					<span id="notifications"><%= @user.new_messages.size %></span>
 				<% end %>
-				&nbsp;&#x25be;
-<!--			<%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%> -->
+				 &#x25be;
+				</a>
 			<% else %>
 				<%= link_to t('layouts.log_in'), {:controller => 'user', :action => 'login', :referer => request.fullpath}, {:id => 'loginprompt', :title => t('layouts.log_in_tooltip')} %>
 				<%= link_to t('layouts.sign_up'), {:controller => 'user', :action => 'new'}, {:id => 'signupprompt', :title => t('layouts.sign_up_tooltip')} %>
@@ -95,8 +96,8 @@
 
     <div id="usermenu" class="menu">
       <ul>
-          <li><a href="#">Inbox</a></li>
-          <li><a href="#">Log out</a></li>
+          <li><%= link_to t('layouts.inbox', :count => @user.new_messages.size), {:controller => 'message', :action => 'inbox', :display_name => @user.display_name}, {:id => 'inboxanchor'} %></li>
+          <li><%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%></li>
       </ul>
     </div>
 

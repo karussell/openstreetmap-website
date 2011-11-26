@@ -907,6 +907,7 @@ en:
       h1: OpenStreetMap
     logo:
       alt_text: OpenStreetMap logo
+    logged_in_as: "Logged in as %{user_link}"
     welcome_user: "Welcome, %{user_link}"
     welcome_user_link_tooltip: Your user page
     home: home
