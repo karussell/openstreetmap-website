@@ -925,7 +925,7 @@ en:
     view: View
     view_tooltip: View the map
     edit: Edit
-    history: History
+    history: Activity
     export: Export
     export_tooltip: Export map data
     gps_traces: GPS Traces
