@@ -23,7 +23,7 @@
         %>
         <%= link_to t('layouts.view'), {:controller => 'site', :action => 'index'}, {:id => 'view', :title => t('layouts.view_tooltip'), :class => viewclass} %><%= link_to h(t('layouts.edit')), {:controller => 'site', :action => 'edit'}, {:id => 'edit', :title => t('javascripts.site.edit_tooltip'), :class => editclass} %><%= link_to t('layouts.history'), {:controller => 'changeset', :action => 'list' }, {:id => 'history', :title => t('javascripts.site.history_tooltip'), :class => historyclass} %>
 		<span id="login">
-			<a id="tools" href="#">Tools&nbsp;&#x25be;</a>
+			<a id="tools" href="#"><%= t 'layouts.tools' %>&nbsp;&#x25be;</a>
 
 			<% if @user and @user.id %>
 				<!-- FIXME: full-greeting vs small-greeting -->
@@ -50,7 +50,7 @@
 		<%= link_to(image_tag("osm_logo_70px.png", :id=>"osmlogo", :size => "70x70", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
 		<div id="siteid">
 			<span id="sitename"><%= t 'layouts.project_name.h1' %></span><br/>
-			<span id="slogan">the free wiki world map</span>
+			<span id="slogan"><%= t 'layouts.tag_line' %></span>
 		</div>
 
 		<div id="search_container">
@@ -59,7 +59,7 @@
 			</form>
 			<ul id="search_links">
 				<!-- <li><a href="#">Get directions</a></li> -->
-				<li><a href="#">Home</a></li>
+				<li><a href="#"><%= image_tag("grey_home_icon.png", :id=>"home_icon", :size => "14x14", :border => 0, :alt => t('layouts.home_tooltip')) %>&nbsp;<%= t 'layouts.home' %></a></li>
 			</ul>
 		</div>
 	</div>
@@ -87,22 +87,21 @@
 
     <div id="toolsmenu" class="menu">
       <ul>
-<!-- FIXME: don't show map key and export if we're not actually on the map page -->
-          <li><a href="#" onclick="openMapKey();">Map key</a></li>
-          <li><%= link_to t('layouts.export'), {:controller => 'site', :action => 'export'}, {:id => 'exportanchor', :title => t('layouts.export_tooltip')} %></li>
-          <li><%= link_to t('layouts.gps_traces'), {:controller => 'trace', :action => 'list', :display_name => nil, :tag => nil, :page => nil}, {:id => 'traceanchor', :title => t('layouts.gps_traces_tooltip')} %></li>
-          <li><a href="http://taginfo.openstreetmap.org/">Tag info</a></li>
+          <li><a href="#" onclick="openMapKey();"><%= t 'site.key.map_key' %></a></li>
+          <li><a href="#"><%= t 'layouts.export' %></a></li>
+          <li><a href="/traces"><%= t 'layouts.gps_traces' %></a></li>
+          <li><a href="http://taginfo.openstreetmap.org/"><%= t 'layouts.tag_info' %></a></li>
       </ul>
     </div>
 
-	<% if @user and @user.id %>
+    <% if @user %>
     <div id="usermenu" class="menu">
       <ul>
-          <li><%= link_to t('layouts.inbox', :count => @user.new_messages.size), {:controller => 'message', :action => 'inbox', :display_name => @user.display_name}, {:id => 'inboxanchor'} %></li>
-          <li><%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%></li>
+          <li><a href="#"><%= t 'layouts.inbox', :count => @user.new_messages.count %></a></li>
+          <li><a href="#"><%= t 'layouts.logout' %></a></li>
       </ul>
     </div>
-	<% end %>
+    <% end %>
 
     <script type="text/javascript">
       createMenu("edit", "editmenu", 1000, "left");

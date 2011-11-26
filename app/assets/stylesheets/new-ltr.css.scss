@@ -133,27 +133,34 @@ margin-left: -22px;
   position: absolute;
   top: 119px;
   right: 0px;
-  width: 190px;
+  width: 200px;
   font-size: small;
   color: #444;
   background-color: #E8E8E8;
   border-left: 5px solid #99BD1D;
-  padding-left: 5px;
   bottom: 0px;
 }
 
 #right_info h1 {
 	background-color: #99BD1D;
 	color: white;
-	width: 100%;
+	width: 195px;
 	margin: 0;
+	padding-left: 5px;
 	padding-bottom: 2px;
 	font-size: medium;
 }
 
+#right_info div, #right_info p {
+    padding-left: 5px;
+}
+
+#right_info ul {
+    padding: 0;
+}
+
 #right_info ul,#right_info p {
 	list-style-type: none;
-	padding: 0;
 	margin: 5px 5px 5px 0;
 }
 

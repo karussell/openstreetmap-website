@@ -968,7 +968,8 @@ en:
     make_a_donation:
       title: Support OpenStreetMap with a monetary donation
       text: Make a Donation
-
+    tools: Tools
+    tag_info: Tag info
   license_page:
     foreign:
       title: About this translation
