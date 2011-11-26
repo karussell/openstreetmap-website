@@ -133,7 +133,7 @@ margin-left: -22px;
   position: absolute;
   top: 119px;
   right: 0px;
-  width: 190px;
+  width: 200px;
   font-size: small;
   color: #444;
 }
@@ -143,15 +143,22 @@ margin-left: -22px;
 	color: white;
 	width: 100%;
 	margin: 0;
-	margin-left: -5px;
+	margin-left: 5px;
 	border-left: 5px solid #99BD1D;
 	padding-bottom: 2px;
 	font-size: medium;
 }
 
+#right_info div, #right_info p {
+    padding-left: 10px;
+}
+
+#right_info ul {
+    padding: 0;
+}
+
 #right_info ul,#right_info p {
 	list-style-type: none;
-	padding: 0;
 	margin: 5px 5px 5px 0;
 }
 
