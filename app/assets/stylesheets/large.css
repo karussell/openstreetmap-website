@@ -12,6 +12,11 @@
   top: 119px;
 }
 
+#content.site_edit {
+	top: 34px;
+	border-top: 4px solid #99BD1D;
+}
+
 /* Rules for OpenLayers maps */
 
 .olControlPanZoom {

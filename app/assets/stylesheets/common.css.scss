@@ -3,6 +3,8 @@
 /* Temporary logo rule - needs to be properly integrated across large/small sites */
 
 #osmlogo {
+	width: 70px;
+	height: 70px;
 	margin-left: 10px;
 	margin-top: 10px;
 	border: 0;
@@ -236,68 +238,6 @@ hr {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-
-/* Rules for tabbed navigation bar */
-
-#tabnav
-{
-  height: 20px;
-  margin: 5px 198px 0 0;
-  background: #DDD;
-}
-
-#tabnav li
-{
-  margin: 0px; 
-  padding: 0px;
-  display: inline;
-  list-style-type: none;
-}
-
-#tabnav a {
-  font-size: 13px;
-  line-height: 14px;
-}
-
-#tabnav a.tooltab, #tabnav a.logintab {
-	color: black;
-	padding: 3px;
-}
-
-#tabnav a.logintab {
-	position: absolute; right: 200px;
-}
-
-#tabnav a.geotab, #tabnav a:link.geotab, #tabnav a:visited.geotab
-{
-border-left: 4px solid white;
-border-right: 4px solid white;
-margin-left: -4px;
-  background: #009fe3;
-color: white;
-  font-weight: bold;
-  padding: 3px 15px;
-  text-decoration: none;
-}
-
-#tabnav a:link.active.geotab, #tabnav a:visited.active.geotab
-{
-  border-bottom: 1px solid #fff;
-  background: #1d71b8;
-}
-
-#tabnav a:link:hover.geotab, #tabnav a:visited:hover.geotab
-{
-  background: #1d71b8;
-}
-
-#tabnav a:link.disabled, #tabnav a:visited.disabled,
-#tabnav a:link:hover.disabled, #tabnav a:visited:hover.disabled
-{
-  background: #bbbbbb;
-  color: white
-}
-
 
 /* Rules for greeting bar in the top right corner */
 

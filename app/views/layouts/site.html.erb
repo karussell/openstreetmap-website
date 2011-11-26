@@ -3,7 +3,12 @@
   <%= render :partial => "layouts/head" %>
 
   <!-- General FIXMEs:
-       no RTL or small-screen support
+       no RTL support
+       site alerts etc.
+       dialogues saying "You must zoom in to edit the map" etc. can't be dismissed
+       Railsify the 'project' and 'showcase' sections
+       go through and adjust spacing
+       special pages (login etc.)
   -->
 
   <body>
@@ -12,7 +17,6 @@
 
 	<div id="black_bar">
 
-		<!-- FIXME: rename History to Activity -->
         <%
         viewclass = 'top_tab geolink llz layers'
         editclass = 'top_tab geolink llz object minzoom13 disabled'
@@ -26,10 +30,8 @@
 			<a id="tools" href="#"><%= t 'layouts.tools' %>&nbsp;&#x25be;</a>
 
 			<% if @user and @user.id %>
-				<!-- FIXME: full-greeting vs small-greeting -->
-				<!-- FIXME: t('layouts.welcome_user_link_tooltip') -->
 				<a href="<%= url_for(:controller => 'user', :action => 'view', :display_name => @user.display_name) %>" id="userprompt">
-				<%= raw(t 'layouts.logged_in_as', :user_link => '<span id="username">'+@user.display_name+'</span>') %>
+				<span id='userprefix'><%= raw(t 'layouts.logged_in_as', :user_link => '</span><span id="username">'+@user.display_name+'</span>') %>
 				<%= yield :greeting %>
 				<% if @user.new_messages.size > 0 %>
 					<span id="notifications"><%= @user.new_messages.size %></span>
@@ -46,8 +48,9 @@
 	<!-- Masthead and search bar -->
 	<!-- FIXME: don't hardcode search_20px image path; home link -->
 
+	<% if params[:action]!='edit' %>
 	<div id="masthead">
-		<%= link_to(image_tag("osm_logo_70px.png", :id=>"osmlogo", :size => "70x70", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
+		<%= link_to(image_tag("osm_logo_70px.png", :id=>"osmlogo", :border => 0, :alt => t('layouts.logo.alt_text')), :controller => 'site', :action => 'index') %>
 		<div id="siteid">
 			<span id="sitename"><%= t 'layouts.project_name.h1' %></span><br/>
 			<span id="slogan"><%= t 'layouts.tag_line' %></span>
@@ -59,12 +62,13 @@
 			</form>
 			<ul id="search_links">
 				<!-- <li><a href="#">Get directions</a></li> -->
-			    <% if @user %>
-				<li><a href="#"><%= image_tag("grey_home_icon.png", :id=>"home_icon", :size => "14x14", :border => 0, :alt => t('layouts.home_tooltip')) %>&nbsp;<%= t 'layouts.home' %></a></li>
+			    <% if @user and !@user.home_lon.nil? and !@user.home_lat.nil? %>
+				<li><a href="#"><%= t 'layouts.home' %></a></li>
 				<% end %>
 			</ul>
 		</div>
 	</div>
+	<% end %>
 
 	<!-- -->
 
@@ -77,7 +81,6 @@
     </div>
 
 	<!-- Drop-down menus -->
-	<!-- FIXME: proper links -->
 
     <div id="editmenu" class="menu">
       <ul>
@@ -114,6 +117,8 @@
 	<!-- Right-hand additional content -->
 	<!-- FIXME: well, all of it -->
 
+	<% if params[:action]!='edit' %>
+
     <div id="right_info">
 
 		<h1>Getting started.</h1>
@@ -143,15 +148,18 @@
 		<p><a href="http://opengeodata.org/project-of-the-week-tennis">OpenCycleMap - bike mapping from OSM data.</a></p>
 
 		<h1>Support us.</h1>
-        <p><%= t 'layouts.intro_1' %></p>
-        <p><%= raw(t 'layouts.intro_3', 
-                  :ucl => link_to(t('layouts.intro_3_ucl'), "http://www.vr.ucl.ac.uk"),
-                  :ic => link_to(t('layouts.intro_3_ic'), "http://www.imperial.ac.uk/"),
-                  :bytemark => link_to(t('layouts.intro_3_bytemark'), "http://www.bytemark.co.uk"),
-                  :partners => link_to(t('layouts.intro_3_partners'), t('layouts.intro_3_partners_url'))) %>
-        </p>
-		<p><a href="http://donate.openstreetmap.org/" title="<%= h(t('layouts.make_a_donation.title')) %>"><%= h(t('layouts.make_a_donation.text')) %></a></p>
+		<div id="support">
+	        <p><%= t 'layouts.intro_1' %></p>
+	        <p><%= raw(t 'layouts.intro_3', 
+	                  :ucl => link_to(t('layouts.intro_3_ucl'), "http://www.vr.ucl.ac.uk"),
+	                  :ic => link_to(t('layouts.intro_3_ic'), "http://www.imperial.ac.uk/"),
+	                  :bytemark => link_to(t('layouts.intro_3_bytemark'), "http://www.bytemark.co.uk"),
+	                  :partners => link_to(t('layouts.intro_3_partners'), t('layouts.intro_3_partners_url'))) %>
+	        </p>
+			<p><a href="http://donate.openstreetmap.org/" title="<%= h(t('layouts.make_a_donation.title')) %>"><%= h(t('layouts.make_a_donation.text')) %></a></p>
+		</div>
     </div>
+	<% end %>
 
     <script type="text/javascript">
     $(document).ready(function () {
