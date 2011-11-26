@@ -18,8 +18,9 @@
 
 <div id="map">
   <div id="permalink">
-    <a href="/" id="permalinkanchor" class="geolink llz layers object"><%= t 'site.index.permalink' %></a><br/>
-    <a href="/" id="shortlinkanchor"><%= t 'site.index.shortlink' %></a>
+    <a href="/" id="permalinkanchor" class="geolink llz layers object"><%= t 'site.index.permalink' %></a> &middot; 
+    <a href="/" id="shortlinkanchor"><%= t 'site.index.shortlink' %></a> &middot; 
+    <%= link_to t('layouts.copyright'), {:controller => 'site', :action => 'copyright'} %>
   </div>
 </div>
 
