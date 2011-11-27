@@ -1,5 +1,14 @@
 <div id="login_wrapper">
 
+  <div id="login_signup">
+    <h2><%= t 'user.login.new to osm' %></h2>
+    <p><%= t 'user.login.to make changes' %></p>
+    <p><%= t 'user.login.create account minute' %></p>
+    <p><%= button_to t('user.login.register now'), :action => :new, :referer => params[:referer] %></p>
+
+    <br clear="both">
+  </div>
+
   <div id="login_login">
     <h1><%= t 'user.login.heading' %></h1>
 
@@ -50,15 +59,6 @@
     <% end %>
 
     <br clear="all" />
-  </div>
-
-  <div id="login_signup">
-    <h2><%= t 'user.login.new to osm' %></h2>
-    <p><%= t 'user.login.to make changes' %></p>
-    <p><%= t 'user.login.create account minute' %></p>
-    <p><%= button_to t('user.login.register now'), :action => :new, :referer => params[:referer] %></p>
-
-    <br clear="both">
   </div>
 
 </div>
