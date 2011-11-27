@@ -9,11 +9,11 @@
 /* Rules for the main content area */
 
 #content {
-  top: 119px;
+  top: 114px;
 }
 
 #content.site_edit {
-	top: 34px;
+	top: 29px;
 	border-top: 4px solid #99BD1D;
 }
 
