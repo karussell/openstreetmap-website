@@ -32,7 +32,6 @@
 			<% if @user and @user.id %>
 				<a href="<%= url_for(:controller => 'user', :action => 'view', :display_name => @user.display_name) %>" id="userprompt">
 				<span id='userprefix'><%= raw(t 'layouts.logged_in_as', :user_link => '</span><span id="username">'+@user.display_name+'</span>') %>
-				<%= yield :greeting %>
 				<% if @user.new_messages.size > 0 %>
 					<span id="notifications"><%= @user.new_messages.size %></span>
 				<% end %>
