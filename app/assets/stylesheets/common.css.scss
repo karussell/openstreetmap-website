@@ -774,31 +774,25 @@ p#contributorGuidance {
 /* Rules for "flash" notice boxes shown at the top of the content area */
 
 #error {
-  border: 1px solid red;
   padding: 7px;
-  background-color: #fff0f0;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  background-color: #BD1021;
+  margin: 5px 5px 15px 5px;
 }
 
 #warning {
-  border: 1px solid orange;
   padding: 7px;
-  background-color: #fff6f0;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  background-color: orange;
+  margin: 5px 5px 15px 5px;
 }
 
 #notice {
-  border: 1px solid green;
   padding: 7px;
-  background-color: #f0fff0;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
+  background-color: #99BD1D;
+  color: white;
+  margin: 5px 5px 15px 5px;
 }
+
+#notice a, #warning a, #error a { color: white; }
 
 /* Rules for highlighting fields with rails validation errors */
 
