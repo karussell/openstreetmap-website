@@ -101,8 +101,9 @@
     <% if @user %>
     <div id="usermenu" class="menu">
       <ul>
-          <li><a href="#"><%= t 'layouts.inbox', :count => @user.new_messages.count %></a></li>
-          <li><a href="#"><%= t 'layouts.logout' %></a></li>
+          <li><%= link_to t('account.my settings'), {:controller => 'user', :action => 'view', :display_name => @user.display_name} %></a></li>
+          <li><%= link_to t('layouts.inbox', :count => @user.new_messages.count), {:controller => 'message', :action => 'inbox', :display_name => @user.display_name} %></li>
+          <li><%= link_to t('layouts.logout'), {:controller => 'user', :action => 'logout', :session => request.session_options[:id], :referer => request.fullpath}, {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%></li>
       </ul>
     </div>
     <% end %>
