@@ -16,11 +16,7 @@
   }
 
   function resizeMap() {
-    var sidebar_width = 0 + $("#sidebar:visible").width();
-
-    if (sidebar_width > 0) {
-      sidebar_width = sidebar_width + 5
-    }
+    var sidebar_width = 0 + $("#sidebar:visible").outerWidth();
 
     <% if t('html.dir') == "ltr" -%>
     $("#map").css("left", (sidebar_width) + "px");
@@ -28,7 +24,6 @@
     $("#map").css("right", (sidebar_width) + "px");
     <% end -%>
     $("#map").width($("#content").width() - sidebar_width);
-    $("#map").height($("#content").height() - 2);
   }
 
   function handleResize() {
