@@ -55,17 +55,7 @@
 			<span id="slogan"><%= t 'layouts.tag_line' %></span>
 		</div>
 
-		<div id="search_container">
-		    <form action="/" id="search_form" method="get" onsubmit="setSearchViewbox(); new Ajax.Request('/geocoder/search', {asynchronous:true, evalScripts:true, onComplete:function(request){endSearch()}, onLoading:function(request){startSearch()}, parameters:Form.serialize(this)}); return false;">
-		      <input id="query" name="query" tabindex="1" type="text" value="" /><input id="searchbutton" name="commit" type="image" src="/assets/search_20px.png" height="20px" value="Go" />
-			</form>
-			<ul id="search_links">
-				<!-- <li><a href="#">Get directions</a></li> -->
-			    <% if @user and !@user.home_lon.nil? and !@user.home_lat.nil? %>
-				<li><a href="#"><%= t 'layouts.home' %></a></li>
-				<% end %>
-			</ul>
-		</div>
+                <%= yield :masthead %>
 	</div>
 	<% end %>
 
