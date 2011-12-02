@@ -22,36 +22,6 @@
 <%= render :partial => preferred_editor %>
 
 <script type="text/javascript">
-  function maximiseMap() {
-    $("#left").hide();
-    $("#greeting").hide();
-    $("#tabnav").hide();
-
-    $("#content").css("top", "10px");
-    <% if t('html.dir') == "ltr" -%>
-    $("#content").css("left", "10px");
-    <% else -%>
-    $("#content").css("right", "10px");
-    <% end -%>
-
-    handleResize();
-  }
-  
-  function minimiseMap() {
-    $("#left").show();
-    $("#greeting").show();
-    $("#tabnav").show();
-
-    $("#content").css("top", "35px");
-    <% if t('html.dir') == "ltr" -%>
-    $("#content").css("left", "192px");
-    <% else -%>
-    $("#content").css("right", "192px");
-    <% end -%>
-
-    handleResize();
-  }
-
   $(document).ready(handleResize);
   $(window).resize(handleResize);
 </script>
