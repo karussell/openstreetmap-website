@@ -26,60 +26,6 @@ html body {
   text-align: left;
 }
 
-/* Rules for the menu displayed in the left sidebar */
-
-.link_box {
-  left: 0px;
-}
-
-.link_box td {
-  padding-right: 4px;
-}
-
-.link_box h1 {
-  text-align: left;
-}
-
-.link_box ul {
-  padding-left: 0px;
-}
-
-.link_box img {
-  margin: 2px 8px 0px 0px;
-}
-
-/*
- * Rules for "optional boxes" which appear in the left sidebar on
- * certain pages. Current users are the seach box on the main page
- * and the tag cloud on the traces pages.
- */
-
-.optionalbox {
-  left: 0px;
-  text-align: left;
-}
-
-/* Rules for tabbed navigation bar */
-
-#tabnav
-{
-  margin-left: 10px;
-  padding-left: 0px;
-}
-
-#tabnav a, #tabnav a:link, #tabnav a:visited 
-{
-  float: left;
-  margin-right: 4px;
-}
-
-/* Rules for greeting bar in the top right corner */
-
-#greeting {
-  float: right;
-  padding-right: 10px;
-}
-
 /* Rules for the message shown in place of the map when javascript is disabled */
 
 #noscript {

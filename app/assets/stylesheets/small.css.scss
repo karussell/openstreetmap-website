@@ -61,27 +61,6 @@ h1 {
   display: none;
 }
 
-/* Rules for greeting bar in the top right corner */
-
-#greeting {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 14px;
-  font-size: 12px;
-  line-height: 12px;
-  white-space: nowrap;
-  background: none;
-}
-
-#full-greeting {
-  display: none;
-}
-
-#small-greeting {
-  display: inline;
-}
-
 /* Rules for OpenLayers maps */
 
 .olControlPanZoomBar {

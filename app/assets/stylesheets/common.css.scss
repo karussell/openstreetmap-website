@@ -46,28 +46,6 @@ hr {
   height: 1px;
 }
 
-/* Rules for the site name */
-
-#small-title {
-  display: none;
-}
-
-/* Rules for the introductory text displayed in the left sidebar to new users */
-
-#intro {
-  width: 160px;
-  padding: 5px;
-  margin: 5px;
-  border: 1px solid #ccc;
-  font-size: 11px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-
-#intro p {
-  margin: 5px;
-}
-
 /*
  * Rules for alert boxes shown in the left sidebar when important
  * information needs to be conveyed such as when the site is
@@ -104,74 +82,6 @@ hr {
   -moz-border-radius: 5px;
 }
 
-/* Feature boxes (RH column) */
-
-.feature_box {
-  width: 160px;
-  min-width: 160px;
-  margin: 10px;
-  padding: 5px;
-  background: #82A24F;
-  font-size: 13px;
-  color: white;
-}
-
-/* Link boxes (RH column) */
-
-.link_box {
-  width: 160px;
-  min-width: 160px;
-  margin: 10px;
-  padding: 5px;
-  background: #B25563;
-  font-size: 13px;
-  color: white;
-}
-
-/* Feature/link box styles */
-
-.link_box td {
-  font-size: 12px;
-}
-
-.feature_box h1, .link_box h1 {
-  margin: 0px 0px 5px 0px;
-  font-style: normal;
-  font-size: 15px;
-}
-
-.link_box ul {
-  margin: 0px;
-  list-style-type: none;
-}
-
-.link_box li {
-  margin: 0px;
-  padding: 0px;
-}
-
-.feature_box p, .link_box p {
-	color: white;
-	font-size: 12px;
-	margin: 4px 0;
-}
-
-.feature_box a, .link_box a {
-  color: white;
-  font-weight: normal;
-}
-
-/* OpenStreetMap Inside */
-
-#inside_image a {
-	padding-top: 50px;
-	padding-bottom: 50px;
-}
-
-#inside_image a img {
-	border: 0;
-}
-
 /* Rules for SOTM advert */
 
 #sotm {
@@ -181,40 +91,6 @@ hr {
   padding: 0px;
   border: 0px;
   background: #fff;
-}
-
-/*
- * Rules for "optional boxes" which appear in the left sidebar on
- * certain pages. Current users are the seach box on the main page
- * and the tag cloud on the traces pages.
- */
-
-.optionalbox {
-  width: 160px;
-  min-width: 160px;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  line-height: 1.2em;
-  font-size: 12px;
-  background: #eee;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-
-.optionalbox h1 {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 22px;
-  margin: 0px;
-  vertical-align: bottom;
-}
-
-/* Rules for collapse arrow */
-
-#collapse_arrow {
-	margin: 4px 0px 0px 10px;
-	padding: 0px;
 }
 
 /* Rules for donation request box */
@@ -230,28 +106,6 @@ hr {
   font-size: 14px;
   border-radius: 5px;
   -moz-border-radius: 5px;
-}
-
-/* Rules for Creative Commons logo button */
-
-#cclogo {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Rules for greeting bar in the top right corner */
-
-#greeting {
-  height: 20px;
-  margin: 0px;
-  padding-top: 5px;
-  font-size: 13px;
-  line-height: 14px;
-  background: url('../images/tab_bottom.gif') repeat-x bottom;
-}
-
-.greeting-bar-unread {
-  font-weight: bold;
 }
 
 /* Rules for the message shown in place of the map when javascript is disabled */
