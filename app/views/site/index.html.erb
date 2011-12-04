@@ -1,9 +1,3 @@
-<% if @user and !@user.home_lon.nil? and !@user.home_lat.nil? %>
-  <% content_for :greeting do %>
-    <%= link_to_function t('layouts.home'), "setPosition(#{@user.home_lat}, #{@user.home_lon}, 15)", { :title => t('layouts.home_tooltip') } %> |
-  <% end %>
-<% end %>
-
 <%= render :partial => 'sidebar', :locals => { :onopen => "resizeMap();", :onclose => "resizeMap();" } %>
 <%= render :partial => 'key' %>
 <%= render :partial => 'search' %>
@@ -17,7 +11,9 @@
 </noscript>
 
 <div id="map">
-  <div id="permalink">
+  <div id="mapinfo">
+  </div>
+  <div id="maplinks">
     <a href="/" id="permalinkanchor" class="geolink llz layers object"><%= t 'site.index.permalink' %></a> &middot; 
     <a href="/" id="shortlinkanchor"><%= t 'site.index.shortlink' %></a> &middot; 
     <%= link_to t('layouts.copyright'), {:controller => 'site', :action => 'copyright'} %>

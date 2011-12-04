@@ -1,0 +1,143 @@
+/* Styles for LTR languages */
+
+/*
+ * Rules for alert boxes shown in the left sidebar when important
+ * information needs to be conveyed such as when the site is
+ * undergoing maintenance.
+ */
+
+#alert {
+  text-align: left;
+}
+
+/*
+ * Rules for notice boxes shown in the left sidebar when important, but
+ * non-critical information needs to be conveyed such as notices about
+ * donation drives.
+ */
+
+.notice {
+  text-align: left;
+}
+
+/* Rules for the message shown in place of the map when javascript is disabled */
+
+#noscript {
+  left: 15px
+}
+
+/* Rules for attribution text under the main map shown on printouts */
+
+.attribution_license {
+  text-align: left;
+}
+
+.attribution_project {
+  text-align: right;
+}
+
+/* Rules for the main content area */
+
+#slim_header img {
+  margin-right: 5px;
+}
+
+/* Rules for the copyright page */
+
+#cc_logo {
+  float: right;
+}
+
+/* Rules for the changeset list shown by the history tab etc */
+
+#changeset_list {
+  text-align: left;
+}
+
+#changeset_list_map {
+  float: right;
+  right: 0px;
+}
+
+/* Rules for the data browser */
+
+#browse_navigation {
+  float: right;
+  margin-left: 10px;
+}
+
+#browse_map {
+  float: right;
+  text-align: right;
+  margin-left: 10px;
+}
+
+/* Rules for the trace list shown by the traces tab etc */
+
+#trace_list {
+  text-align: right;
+}
+
+/* Rules for the diary list */
+
+.diary_entry_list img.user_thumbnail {
+  float: right;
+}
+
+/* Rules for the diary entry view */
+
+.diary_entry_view img.user_image {
+  float: right;
+}
+
+.diary_entry_view img.user_thumbnail {
+  float: right;
+}
+
+/* Rules for the user list */
+
+#user_list_actions {
+  float: right;
+}
+
+/* Rules for the account confirmation page */
+
+form#termsForm div#buttons {
+  float: right;
+}
+
+form#termsForm input#agree {
+  margin-left: 50px;
+}
+
+/* Rules for the user view */
+
+.user_view img.user_image {
+  float: right;
+}
+
+.user_view .user_map {
+  float: right;
+}
+
+/* Rules for rails validation error boxes */
+
+#errorExplanation h2 {
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+}
+
+/* Rules for forms */
+
+.fieldName {
+  text-align: right;
+}
+
+.submitButton {
+  text-align: right;
+}
+
+input.openid_url { 
+  background: url('../images/openid_input.png') repeat-y left white;
+  padding-left: 16px;
+}

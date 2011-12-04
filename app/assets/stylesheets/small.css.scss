@@ -1,208 +1,109 @@
 /* Styles specific to a small screen, such as iPhone, Android, etc... */
 
-/* Black navigation bar */
+/* Page body */
 
-#black_bar {
-	height: 20px !important;
-	line-height: 15px !important;
+body {
+    font-size: 12px;
+
+    h1 {
+        font-size: 14px;
+    }
 }
 
-#black_bar .top_tab {
-	width: 50px !important;
-	height: 15px !important;
-}
+/* Toolbar */
 
-#osmlogo {
-	margin-top: 7px !important;
-	height: 40px !important;
-	width: 40px !important;
-}
+#toolbar {
+    height: 20px;
+    line-height: 15px;
 
-#userprefix {
-	display: none;
+    #tabs a {
+        width: 50px;
+        height: 15px;
+    }
+
+    #userprefix {
+        display: none;
+    }
 }
 
 /* Masthead */
 
-#masthead { height: 50px !important; }
-#siteid { padding-top: 13px !important; margin-left: 60px !important; }
-#sitename { font-size: large !important; }
-#slogan { display: none; }
-#search_container { top: 30px !important; }
-#search_links { font-size: x-small; margin-top: 2px !important; }
-#query { width: 100px !important; }
+#masthead {
+    height: 50px;
+
+    #osmlogo {
+        margin-top: 7px;
+        height: 40px;
+        width: 40px;
+    }
+
+    #siteid { 
+        padding-top: 13px;
+        margin-left: 60px;
+
+        #sitename {
+            font-size: large;
+        }
+
+        #slogan {
+            display: none;
+        }
+    }
+}
+
+/* Search box */
+
+#search_container {
+    top: 30px;
+
+    #search_form {
+        input#query {
+            width: 100px;
+        }
+    }
+
+    ul#search_links {
+        font-size: x-small;
+        margin-top: 2px;
+    }
+}
+
 /* Main content area */
 
 #content {
-  left: 0px;
-  right: 0px;
-  top: 79px;
-  margin-left: 0px;
-  margin-right: 0px;
+    left: 0px;
+    right: 0px;
+    top: 79px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
-#content.site_index,#content.site_edit {
-  padding: 0px !important;
+/* Map */
+
+#map {
+    .olControlPanZoomBar {
+        display: none;
+    }
+
+    .olControlAttribution {
+        height: 41px;
+    }
+
+    #mapinfo {
+        height: 61px;
+    }
 }
 
-/* Default rules for the body of every page */
+/* Information bar */
 
-body {
-  font-size: 12px;
+#infobar {
+    display: none;
 }
 
-h1 {
-  font-size: 14px;
-}
+/* Edit view */
 
-/* Rules for the right information sidebar */
-
-#right_info {
-  display: none;
-}
-
-/* Rules for greeting bar in the top right corner */
-
-#greeting {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 14px;
-  font-size: 12px;
-  line-height: 12px;
-  white-space: nowrap;
-  background: none;
-}
-
-#full-greeting {
-  display: none;
-}
-
-#small-greeting {
-  display: inline;
-}
-
-/* Rules for OpenLayers maps */
-
-.olControlPanZoomBar {
-  display: none;
-}
-
-/* Rules for the signup form */
-
-#signupForm input[type="text"], #signupForm input[type="password"] {
-  width: 100%;
-}
-
-#signupForm input#user_email {
-  max-width: 30em;
-}
-
-#signupForm input#user_email_confirmation {
-  max-width: 30em;
-}
-
-#signupForm input#user_display_name {
-  max-width: 20em;
-}
-
-#signupForm input#user_pass_crypt {
-  max-width: 20em;
-}
-
-#signupForm input#user_pass_crypt_confirmation {
-  max-width: 20em;
-}
-
-/* Rules for the login form */
-
-#login_login input#user_email {
-  width: 100%;
-  max-width: 18em;
-}
-
-#login_login input#user_password {
-  width: 100%;
-  max-width: 18em;
-}
-
-#login_login input#openid_url {
-  width: 100%;
-  max-width: 18em;
-}
-
-#login_openid_buttons td {
-  padding-left: 2px;
-  padding-right: 2px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-/* Rules for the profile page */
-
-.user_map {
-  width: 100% !important;
-  height: 300px !important;
-}
-
-/* Rules for the user settings page */
-
-#user_new_email {
-  width: 60% !important;
-}
-
-#user_description, #user_preferred_editor {
-  width: 90% !important;
-}
-
-.minorNote {
-  display: block;
-}
-
-/* Rules for the browse pages */
-
-#browse_navigation {
-  width: 100% !important;
-  margin-top: 0 !important;
-}
-
-#small_map, #browse_map {
-  width: 100% !important;
-}
-
-#changeset_list tr {
-  display: block;
-  clear: left;
-  width: 100%;
-}
-
-#changeset_list th {
-  display: none;
-}
-
-#changeset_list td {
-  display: block;
-  float: left;
-  padding-right: 10px;
-}
-
-#changeset_list td.comment, #changeset_list td.area {
-  width: 96%;
-  clear: left;
-}
-
-/* Rules for the diary entries pages */
-
-#diary_entry_title, #diary_entry_body, #diary_entry_language_code, #diary_comment_body {
-  width: 100% !important;
-}
-
-#usemap {
-  display: block;
-}
-
-/* Rules for the messaging pages */
-
-#message_title, #message_body {
-  width: 100% !important;
+.site_edit {
+    #content {
+        padding: 0px;
+    }
 }

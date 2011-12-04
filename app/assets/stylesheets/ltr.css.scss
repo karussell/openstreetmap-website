@@ -1,228 +1,127 @@
 /* Styles for LTR languages */
 
-/* Default rules for the body of every page */
+/* Page body */
 
-html body {
+body {
   text-align: left;
 }
 
-/*
- * Rules for alert boxes shown in the left sidebar when important
- * information needs to be conveyed such as when the site is
- * undergoing maintenance.
- */
+/* Menus */
 
-#alert {
-  text-align: left;
+.menu {
+    ul {
+        li {
+            padding-right-width: 10px;
+        }
+    }
 }
 
-/*
- * Rules for notice boxes shown in the left sidebar when important, but
- * non-critical information needs to be conveyed such as notices about
- * donation drives.
- */
+/* Toolbar */
 
-.notice {
-  text-align: left;
+#toolbar {
+    #tabs {
+        margin-left: 10px;
+    }
+
+    #login {
+        float: right;
+        margin-right: 10px;
+    }
+
+    #signupprompt {
+        margin-left: 10px;
+    }
+
+    #tools {
+        float: right;
+        margin-right: 14px;
+    }
 }
 
-/* Rules for the menu displayed in the left sidebar */
+/* Masthead */
 
-.link_box {
-  left: 0px;
+#masthead {
+    #osmlogo {
+        float: left;
+        margin-left: 10px;
+    }
+
+    #siteid {
+        margin-left: 90px;
+    }
 }
 
-.link_box td {
-  padding-right: 4px;
+/* Search box */
+
+#search_container {
+    right: 10px;
+    text-align: right;
+
+    #search_form {
+        input#submit {
+            margin-left: -22px;
+        }
+    }
+
+    ul#search_links {
+        li {
+            padding-left: 5px;
+            border-left-width: 1px;
+            margin-left: 2px;
+
+            &:first-child {
+                border-left: none;
+            }
+        }
+    }
 }
 
-.link_box h1 {
-  text-align: left;
-}
-
-.link_box ul {
-  padding-left: 0px;
-}
-
-.link_box img {
-  margin: 2px 8px 0px 0px;
-}
-
-/*
- * Rules for "optional boxes" which appear in the left sidebar on
- * certain pages. Current users are the seach box on the main page
- * and the tag cloud on the traces pages.
- */
-
-.optionalbox {
-  left: 0px;
-  text-align: left;
-}
-
-/* Rules for tabbed navigation bar */
-
-#tabnav
-{
-  margin-left: 10px;
-  padding-left: 0px;
-}
-
-#tabnav a, #tabnav a:link, #tabnav a:visited 
-{
-  float: left;
-  margin-right: 4px;
-}
-
-/* Rules for greeting bar in the top right corner */
-
-#greeting {
-  float: right;
-  padding-right: 10px;
-}
-
-/* Rules for the message shown in place of the map when javascript is disabled */
-
-#noscript {
-  left: 15px
-}
-
-/* Rules for attribution text under the main map shown on printouts */
-
-.attribution_license {
-  text-align: left;
-}
-
-.attribution_project {
-  text-align: right;
-}
-
-/* Rules for the popout map sidebar */
-
-#sidebar {
-  left: 0px;
-}
-
-#sidebar #sidebar_title {
-  text-align: left;
-}
-
-#sidebar #sidebar_close {
-  text-align: right;
-}
-
-/* Rules for the main content area */
+/* Main content area */
 
 #content {
-  left: 0px;
-  right: 200px;
-  text-align: left;
+    left: 0px;
+    right: 200px;
+    text-align: left;
 }
 
-#content.site_edit {
-	right: 0px;
-	padding: 0px;
+/* Map sidebar */
+
+#sidebar {
+    left: 0px;
+    border-right-width: 4px;
+
+    #sidebar_title {
+        text-align: left;
+    }
+
+    #sidebar_close {
+        text-align: right;
+    }
 }
 
-#slim_header img {
-  margin-right: 5px;
+/* Information bar */
+
+#infobar {
+    right: 0px;
+    border-left-width: 5px;
+
+    h1 {
+        padding-left: 5px;
+    }
+
+    div, ul, p {
+        padding-left: 5px;
+    }
+
+    ul, p {
+        margin: 5px 5px 5px 0px;
+    }
 }
 
-/* Rules for the copyright page */
+/* Edit view */
 
-#cc_logo {
-  float: right;
-}
-
-/* Rules for the changeset list shown by the history tab etc */
-
-#changeset_list {
-  text-align: left;
-}
-
-#changeset_list_map {
-  float: right;
-  right: 0px;
-}
-
-/* Rules for the data browser */
-
-#browse_navigation {
-  float: right;
-  margin-left: 10px;
-}
-
-#browse_map {
-  float: right;
-  text-align: right;
-  margin-left: 10px;
-}
-
-/* Rules for the trace list shown by the traces tab etc */
-
-#trace_list {
-  text-align: right;
-}
-
-/* Rules for the diary list */
-
-.diary_entry_list img.user_thumbnail {
-  float: right;
-}
-
-/* Rules for the diary entry view */
-
-.diary_entry_view img.user_image {
-  float: right;
-}
-
-.diary_entry_view img.user_thumbnail {
-  float: right;
-}
-
-/* Rules for the user list */
-
-#user_list_actions {
-  float: right;
-}
-
-/* Rules for the account confirmation page */
-
-form#termsForm div#buttons {
-  float: right;
-}
-
-form#termsForm input#agree {
-  margin-left: 50px;
-}
-
-/* Rules for the user view */
-
-.user_view img.user_image {
-  float: right;
-}
-
-.user_view .user_map {
-  float: right;
-}
-
-/* Rules for rails validation error boxes */
-
-#errorExplanation h2 {
-  text-align: left;
-  padding: 5px 5px 5px 15px;
-}
-
-/* Rules for forms */
-
-.fieldName {
-  text-align: right;
-}
-
-.submitButton {
-  text-align: right;
-}
-
-input.openid_url { 
-  background: url('../images/openid_input.png') repeat-y left white;
-  padding-left: 16px;
+.site_edit {
+    #content {
+        right: 0px;
+    }
 }
