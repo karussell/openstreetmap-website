@@ -54,6 +54,7 @@ body {
                 color: $white;
 
                 &:hover {
+                    text-decoration: none;
                     background-color: $midgrey;
                 }
             }
