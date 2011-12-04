@@ -278,10 +278,29 @@ body {
     margin: 0px;
 
     .olControlAttribution {
-        display: none !important;
+        bottom: 15px;
+        height: 40px;
+        right: 15px;
+        color: black;
+        font-size: smaller;
     }
 
-    #permalink {
+    .olControlLayerSwitcher .layersDiv {
+        color: black;
+        background-color: $midgrey;
+    }
+
+    #mapinfo {
+        z-index: 1000;
+        position: absolute;
+        bottom: 0px;
+        height: 70px;
+        left: 0px;
+        right: 0px;
+        background-color: transparentize($midgrey, 0.25);
+    }
+
+    #maplinks {
         z-index: 10000;
         position: absolute;
         bottom: 15px;
