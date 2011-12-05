@@ -229,6 +229,30 @@ body {
     line-height: 1.2em;
 }
 
+/* Flash notices */
+
+.flash {
+    padding: 7px;
+    margin: 5px 5px 15px 5px;
+
+    &.error {
+        background-color: $red;
+    }
+
+    &.warning {
+        background-color: $orange;
+    }
+
+    &.notice {
+        color: $white;
+        background-color: $olive;
+    }
+
+    a {
+        color: $white;
+    }
+}
+
 /* Map sidebar */
 
 #sidebar {

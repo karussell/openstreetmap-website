@@ -520,29 +520,6 @@ p#contributorGuidance {
   font-weight: bold;
 }
 
-/* Rules for "flash" notice boxes shown at the top of the content area */
-
-#error {
-  padding: 7px;
-  background-color: #BD1021;
-  margin: 5px 5px 15px 5px;
-}
-
-#warning {
-  padding: 7px;
-  background-color: orange;
-  margin: 5px 5px 15px 5px;
-}
-
-#notice {
-  padding: 7px;
-  background-color: #99BD1D;
-  color: white;
-  margin: 5px 5px 15px 5px;
-}
-
-#notice a, #warning a, #error a { color: white; }
-
 /* Rules for highlighting fields with rails validation errors */
 
 .fieldWithErrors {
