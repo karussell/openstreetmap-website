@@ -88,14 +88,15 @@ body {
 
 #sidebar {
     left: 0px;
-    border-right-width: 4px;
 
-    #sidebar_title {
-        text-align: left;
-    }
+    #sidebar_wrapper {
+        #sidebar_title {
+            text-align: left;
+        }
 
-    #sidebar_close {
-        text-align: right;
+        #sidebar_close {
+            text-align: right;
+        }
     }
 }
 

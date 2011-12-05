@@ -16,7 +16,7 @@
   }
 
   function resizeMap() {
-    var sidebar_width = 0 + $("#sidebar:visible").outerWidth();
+    var sidebar_width = 0 + $("#sidebar").outerWidth();
 
     <% if t('html.dir') == "ltr" -%>
     $("#map").css("left", (sidebar_width) + "px");
