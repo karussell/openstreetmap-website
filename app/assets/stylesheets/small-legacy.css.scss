@@ -1,5 +1,11 @@
 /* Styles specific to a small screen, such as iPhone, Android, etc... */
 
+/* Rules for search results which appear in the popout sidebar */
+
+search_results_entry {
+  padding: 2px 0px;
+}
+
 /* Rules for the signup form */
 
 #signupForm input[type="text"], #signupForm input[type="password"] {

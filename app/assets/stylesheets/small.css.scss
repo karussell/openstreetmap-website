@@ -68,6 +68,11 @@ body {
     }
 }
 
+/* Map sidebar */
+
+#sidebar {
+}
+
 /* Main content area */
 
 #content {
@@ -76,6 +81,20 @@ body {
     top: 79px;
     margin-left: 0px;
     margin-right: 0px;
+}
+
+/* Map sidebar */
+
+#sidebar {
+    #sidebar_wrapper {
+        .sidebar_title {
+            font-size: 10px;
+        }
+
+        #sidebar_content {
+            font-size: 10px;
+        }
+    }
 }
 
 /* Map */
@@ -98,6 +117,16 @@ body {
 
 #infobar {
     display: none;
+}
+
+/* Front page view */
+
+.site_index {
+    #content {
+        #map {
+            border: 0px;
+        }
+    }
 }
 
 /* Edit view */
