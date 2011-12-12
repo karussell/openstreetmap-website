@@ -1,11 +1,13 @@
 <div id="sidebar">
-  <table class="sidebar_title" width="100%">
-    <tr>
-      <td id="sidebar_title"><% t 'site.sidebar.search_results' %></td>
-      <td id="sidebar_close"><a href="javascript:closeSidebar()"><%= t 'site.sidebar.close' %></a></td>
-    </tr>
-  </table>
-  <div id="sidebar_content">
+  <div id="sidebar_wrapper">
+    <table class="sidebar_title" width="100%">
+      <tr>
+        <td id="sidebar_title"><% t 'site.sidebar.search_results' %></td>
+        <td id="sidebar_close"><a href="javascript:closeSidebar()"><%= t 'site.sidebar.close' %></a></td>
+      </tr>
+    </table>
+    <div id="sidebar_content">
+    </div>
   </div>
 </div>
 
@@ -23,20 +25,41 @@
 
     if (options.title) { $("#sidebar_title").html(options.title); }
 
-    if (options.width) { $("#sidebar").width(options.width); }
-    else { $("#sidebar").width("30%"); }
+    var width = options.width || $("#sidebar").parent().width() * 0.3;
 
-    $("#sidebar").css("display", "block");
+    $("#sidebar_wrapper").width(width - 5);
 
-    <%= onopen %>
+    <% if t('html.dir') == "ltr" -%>
+    $("#sidebar").animate({ borderRightWidth: 5 }, {
+    <% else -%>
+    $("#sidebar").animate({ borderLeftWidth: 5 }, {
+    <% end -%>
+       duration: 100,
+       step: function () { <%= resize %> },
+       complete: function () { <%= resize %> }
+    }).animate({ width: width - 5 }, {
+       duration: 900,
+       step: function () { <%= resize %> },
+       complete: function () { <%= resize %> }
+    });
 
     onclose = options.onclose;
   }
 
   function closeSidebar() {
-    $("#sidebar").css("display", "none");
-
-    <%= onclose %>
+    $("#sidebar").animate({ width: 0 }, {
+       duration: 900,
+       step: function () { <%= resize %> },
+       complete: function () { <%= resize %> }
+    <% if t('html.dir') == "ltr" -%>
+    }).animate({ borderRightWidth: 0 }, {
+    <% else -%>
+    }).animate({ borderLeftWidth: 0 }, {
+    <% end -%>
+       duration: 100,
+       step: function () { <%= resize %> },
+       complete: function () { <%= resize %> }
+    });
 
     if (onclose) {
        onclose();

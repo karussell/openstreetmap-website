@@ -38,24 +38,6 @@ hr {
   -moz-border-radius: 5px;
 }
 
-/*
- * Rules for notice boxes shown in the left sidebar when important, but
- * non-critical information needs to be conveyed such as notices about
- * donation drives.
- */
-
-.notice {
-  width: 160px;
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  background: #ea0;
-  line-height: 1.2em;
-  font-size: 14px;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-}
-
 /* Rules for SOTM advert */
 
 #sotm {
@@ -537,29 +519,6 @@ p#contributorGuidance {
 .inbox-row-unread .inbox-subject {
   font-weight: bold;
 }
-
-/* Rules for "flash" notice boxes shown at the top of the content area */
-
-#error {
-  padding: 7px;
-  background-color: #BD1021;
-  margin: 5px 5px 15px 5px;
-}
-
-#warning {
-  padding: 7px;
-  background-color: orange;
-  margin: 5px 5px 15px 5px;
-}
-
-#notice {
-  padding: 7px;
-  background-color: #99BD1D;
-  color: white;
-  margin: 5px 5px 15px 5px;
-}
-
-#notice a, #warning a, #error a { color: white; }
 
 /* Rules for highlighting fields with rails validation errors */
 

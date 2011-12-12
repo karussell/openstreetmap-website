@@ -10,7 +10,7 @@
 <p><%= raw t 'site.edit.anon_edits', :link => link_to(t('site.edit.anon_edits_link_text'), t('site.edit.anon_edits_link')) %></p>
 <% else %>
 
-<%= render :partial => 'sidebar', :locals => { :onopen => "resizeMap();", :onclose => "resizeMap();" } %>
+<%= render :partial => 'sidebar', :locals => { :resize => "resizeMap();" } %>
 <%= render :partial => 'search' %>
 <%= render :partial => 'resize' %>
 

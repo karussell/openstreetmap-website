@@ -229,44 +229,74 @@ body {
     line-height: 1.2em;
 }
 
+/* Flash notices */
+
+.flash {
+    padding: 7px;
+    margin: 5px 5px 15px 5px;
+
+    &.error {
+        background-color: $red;
+    }
+
+    &.warning {
+        background-color: $orange;
+    }
+
+    &.notice {
+        color: $white;
+        background-color: $olive;
+    }
+
+    a {
+        color: $white;
+    }
+}
+
 /* Map sidebar */
 
 #sidebar {
-    display: none;
     position: absolute;
     top: 0px;
     bottom: 0px;
-    width: 30%;
-    margin: 0px;
+    width: 0px;
     border: 0px solid $olive;
-    padding: 0px;
+    overflow: hidden;
+    z-index: 10000;
 
-    .sidebar_title {
-        width: 100%;
-        padding: 0px 0px 2px 0px;
-        margin: 0px;
-        color: $white;
-        background-color: $olive;
-        font-size: medium;
-        font-weight: bold;
+    #sidebar_wrapper {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
 
-        #sidebar_close a {
+        .sidebar_title {
+            left: 0px;
+            right: 0px;
+            padding: 0px 0px 2px 0px;
+            margin: 0px;
             color: $white;
-            font-weight: normal;
-            font-size: smaller;
-        }
-    }
+            background-color: $olive;
+            font-size: medium;
+            font-weight: bold;
 
-    #sidebar_content {
-        overflow: auto;
-        position: absolute;
-        top: 29px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        margin: 4px;
-        font-size: 13px;
-        line-height: 14px;
+            #sidebar_close a {
+                color: $white;
+                font-weight: normal;
+                font-size: smaller;
+            }
+        }
+
+        #sidebar_content {
+            overflow: auto;
+            position: absolute;
+            top: 29px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            margin: 4px;
+            font-size: 13px;
+            line-height: 14px;
+        }
     }
 }
 
@@ -368,7 +398,7 @@ body {
 
 .site_index {
     #content {
-        padding: 0px 5px 0px 0px;
+        padding: 0px;
 
         #map {
             position: absolute;

@@ -79,7 +79,7 @@ body {
 /* Main content area */
 
 #content {
-    left: 200px;
+    left: 205px;
     right: 0px;
     text-align: right;
 }
@@ -88,14 +88,15 @@ body {
 
 #sidebar {
     right: 0px;
-    border-left-width: 4px;
 
-    #sidebar_title {
-        text-align: right;
-    }
+    #sidebar_wrapper {
+        #sidebar_title {
+            text-align: right;
+        }
 
-    #sidebar_close {
-        text-align: left;
+        #sidebar_close {
+            text-align: left;
+        }
     }
 }
 
