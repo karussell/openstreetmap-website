@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -126,7 +125,7 @@ CREATE TYPE user_status_enum AS ENUM (
 
 CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
     LANGUAGE c STRICT
-    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'maptile_for_point';
+    AS '/home/peterk/Dokumente/quell/graphstuff/openstreetmap-website/db/functions/libpgosm', 'maptile_for_point';
 
 
 --
@@ -135,7 +134,7 @@ CREATE FUNCTION maptile_for_point(bigint, bigint, integer) RETURNS integer
 
 CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
     LANGUAGE c STRICT
-    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'tile_for_point';
+    AS '/home/peterk/Dokumente/quell/graphstuff/openstreetmap-website/db/functions/libpgosm', 'tile_for_point';
 
 
 --
@@ -143,8 +142,8 @@ CREATE FUNCTION tile_for_point(integer, integer) RETURNS bigint
 --
 
 CREATE FUNCTION xid_to_int4(xid) RETURNS integer
-    LANGUAGE c IMMUTABLE STRICT
-    AS '/srv/www/master.osm.compton.nu/db/functions/libpgosm.so', 'xid_to_int4';
+    LANGUAGE c STRICT
+    AS '/home/peterk/Dokumente/quell/graphstuff/openstreetmap-website/db/functions/libpgosm', 'xid_to_int4';
 
 
 SET default_tablespace = '';
@@ -698,7 +697,7 @@ CREATE TABLE nodes (
 --
 
 CREATE TABLE note_comments (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     note_id bigint NOT NULL,
     visible boolean NOT NULL,
     created_at timestamp without time zone NOT NULL,
@@ -733,7 +732,7 @@ ALTER SEQUENCE note_comments_id_seq OWNED BY note_comments.id;
 --
 
 CREATE TABLE notes (
-    id integer NOT NULL,
+    id bigint NOT NULL,
     latitude integer NOT NULL,
     longitude integer NOT NULL,
     tile bigint NOT NULL,
@@ -851,8 +850,8 @@ CREATE TABLE redactions (
     id integer NOT NULL,
     title character varying(255),
     description text,
-    created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
     user_id bigint NOT NULL,
     description_format format_enum DEFAULT 'markdown'::format_enum NOT NULL
 );
@@ -1064,9 +1063,9 @@ CREATE TABLE users (
     status user_status_enum DEFAULT 'pending'::user_status_enum NOT NULL,
     terms_agreed timestamp without time zone,
     consider_pd boolean DEFAULT false NOT NULL,
+    openid_url character varying(255),
     preferred_editor character varying(255),
     terms_seen boolean DEFAULT false NOT NULL,
-    openid_url character varying(255),
     description_format format_enum DEFAULT 'html'::format_enum NOT NULL,
     image_fingerprint character varying(255),
     changesets_count integer DEFAULT 0 NOT NULL,
@@ -1580,13 +1579,6 @@ CREATE INDEX acls_k_idx ON acls USING btree (k);
 --
 
 CREATE INDEX changeset_tags_id_idx ON changeset_tags USING btree (changeset_id);
-
-
---
--- Name: changesets_bbox_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX changesets_bbox_idx ON changesets USING gist (min_lat, max_lat, min_lon, max_lon);
 
 
 --
